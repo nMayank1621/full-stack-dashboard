@@ -1,0 +1,61 @@
+PROJECT OVERVIEW
+Project Name: Dashboard Application
+1. NAVBAR COMPONENT
+   - Location: src/components/Navbar.jsx + Navbar.css
+   - Features:
+     * Brand name: "Escorts Kubota Limited"
+     * Navigation links: ABOUT, CONTACT, BLOG
+     * Authentication links: LOG-IN, SIGN-UP
+     * Responsive mobile menu with hamburger button
+     * Hover effects on links
+     * Active state for mobile menu
+2. SIDEBAR COMPONENT
+   - Location: src/components/Sidebar.jsx + Sidebar.css
+   - Features:
+     * Navigation items: Dashboard, Analytics, Reports, Users, Settings
+     * Collapsible sidebar with toggle functionality
+     * Active state highlighting (Dashboard is active)
+     * Responsive design:
+       - Desktop: Fixed width (250px)
+       - Mobile: Slides in from left, toggle button in content area
+     * Hover effects on sidebar items
+3. DASHBOARD CARDS
+   - Location: src/components/cards.jsx + Cards.css
+   - Features:
+     * 4 statistics cards: Sales ($1.5M), Orders ($1.5M), Visitors (999K), Users (585K)
+     * Each card includes:
+       - Icon with colored circular background
+       - Card title
+       - Subtitle (context)
+       - Value display
+       - Progress bar with color coding
+     * Hover effects: Cards lift slightly with enhanced shadow
+     * Compact, clean design
+     * Responsive grid layout
+4. MAIN APPLICATION (App.jsx)
+   - Location: src/App.jsx
+   - Features:
+     * State management with useState:
+       - isMobileMenuOpen: Controls navbar mobile menu
+       - isSidebarOpen: Controls sidebar visibility
+     * Toggle functions for both mobile menu and sidebar
+     * Welcome heading ("Welcome!")
+     * Cards grid displaying all 4 statistics cards
+     * Responsive layout structure
+5. FULL SCREEN FIT
+   - Changed root container width from fixed 1126px to 100%
+   - Removed centered margin constraints
+   - Page now fills entire screen width
+6. RESPONSIVE DESIGN
+   - Media queries for different screen sizes:
+     * ≤1024px: Tablet view, 2 cards per row, narrower sidebar
+     * ≤768px: Mobile view, hamburger menu, sidebar toggle, 1 card per row
+     * ≤480px: Small mobile view, further compact styling
+7. CSS ORGANIZATION
+   - Separated CSS into individual component files:
+     * Navbar.css for navbar styles
+     * Sidebar.css for sidebar styles
+     * Cards.css for cards styles
+     * App.css for global and layout styles
+   - Better maintainability and modularity
+

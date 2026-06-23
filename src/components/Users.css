@@ -1,0 +1,133 @@
+.users-container {
+  padding: 20px;
+}
+
+.page-header {
+  margin-bottom: 30px;
+}
+
+.page-header h1 {
+  color: #3a4560;
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 16px;
+}
+
+.users-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.user-card {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.user-card:hover {
+  transform: perspective(1000px) scale(1.02) rotateX(1deg);
+  box-shadow: 
+    0 20px 45px rgba(0,0,0,0.15),
+    0 8px 25px rgba(0,0,0,0.1),
+    0 0 0 1px rgba(255,255,255,0.5);
+}
+
+.user-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3a4560 0%, #4a5a7a 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.user-avatar:hover {
+  transform: perspective(500px) scale(1.1) rotateY(10deg);
+  box-shadow: 0 8px 20px rgba(58, 69, 96, 0.3);
+}
+
+.user-details {
+  flex: 1;
+}
+
+.user-details h3 {
+  color: #3a4560;
+  font-size: 18px;
+  margin: 0 0 6px 0;
+}
+
+.user-email {
+  color: #888;
+  font-size: 14px;
+  margin: 0;
+}
+
+.user-role {
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: #f0f4ff;
+  color: #3a4560;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.user-status {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-active {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-inactive {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.add-user-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.add-user-btn {
+  background: linear-gradient(135deg, #3a4560 0%, #4a5a7a 100%);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 15px rgba(58, 69, 96, 0.3);
+}
+
+.add-user-btn:hover {
+  transform: perspective(500px) translateY(-4px) translateZ(8px) rotateX(-2deg);
+  box-shadow: 0 12px 30px rgba(58, 69, 96, 0.4);
+}

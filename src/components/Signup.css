@@ -1,0 +1,127 @@
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+.auth-card {
+  background: white;
+  padding: 50px;
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 440px;
+  border-top: 4px solid #3a4560;
+}
+
+.auth-card h2 {
+  text-align: center;
+  margin-bottom: 35px;
+  color: #3a4560;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #3a4560;
+  font-size: 15px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 16px 18px;
+  border: 2px solid #e5e9f2;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #3a4560;
+  box-shadow: 0 0 0 4px rgba(58, 69, 96, 0.08);
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #3a4560 0%, #4a5a7a 100%);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  box-shadow: 
+    0 4px 15px rgba(58, 69, 96, 0.3),
+    0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.auth-btn:hover {
+  transform: perspective(500px) translateY(-6px) translateZ(10px) rotateX(-2deg);
+  box-shadow: 
+    0 16px 35px rgba(58, 69, 96, 0.4),
+    0 8px 20px rgba(58, 69, 96, 0.25),
+    0 0 0 1px rgba(255,255,255,0.1);
+}
+
+.auth-btn:active {
+  transform: perspective(500px) translateY(0) translateZ(0) rotateX(0);
+  box-shadow: 
+    0 4px 12px rgba(58, 69, 96, 0.25),
+    0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.auth-link {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.auth-link button {
+  background: none;
+  border: none;
+  color: #3a4560;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+.auth-link button:hover {
+  color: #4a5a7a;
+  text-decoration: underline;
+}
+
+.error-message {
+  background: linear-gradient(135deg, #ffebee 0%, #fecaca 100%);
+  color: #991b1b;
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid #fca5a5;
+}
+
+.success-message {
+  background: linear-gradient(135deg, #e8f5e9 0%, #d1fae5 100%);
+  color: #166534;
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid #86efac;
+}

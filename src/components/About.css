@@ -1,0 +1,65 @@
+.page-card {
+  background: white;
+  padding: 50px;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  max-width: 950px;
+  margin: 0 auto;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.page-card:hover {
+  transform: perspective(1000px) translateY(-8px) rotateX(0.5deg);
+  box-shadow: 
+    0 20px 45px rgba(0, 0, 0, 0.15),
+    0 8px 25px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255,255,255,0.5);
+}
+
+.page-card h1 {
+  color: #3a4560;
+  margin-bottom: 20px;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.page-card h2 {
+  color: #3a4560;
+  margin: 35px 0 18px 0;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.page-card p {
+  line-height: 1.9;
+  color: #666;
+  font-size: 17px;
+  margin-bottom: 18px;
+}
+
+.values-list {
+  padding-left: 0;
+  margin-top: 20px;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.values-list li {
+  background: linear-gradient(135deg, #f6f8fc 0%, #f0f4ff 100%);
+  padding: 22px;
+  border-radius: 14px;
+  color: #3a4560;
+  font-size: 16px;
+  font-weight: 500;
+  border-left: 5px solid #3a4560;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.values-list li:hover {
+  transform: perspective(500px) translateY(-6px) translateZ(8px) rotateY(-1deg);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}

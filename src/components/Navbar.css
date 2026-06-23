@@ -1,0 +1,191 @@
+.header {
+    width: 100%;
+    height: 85px;
+    background: linear-gradient(90deg, #3a4560 0%, #4a5a7a 50%, #3a4560 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    position: relative;
+    box-shadow: 
+        0 8px 30px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255,255,255,0.05);
+    transform-style: preserve-3d;
+}
+
+.logo-nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.logo-container h2 {
+    color: white;
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: bold;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.nav-links,
+.signin-up {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav-links li a,
+.signin-up li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 8px 16px;
+    border-radius: 10px;
+    transform-style: preserve-3d;
+}
+
+.nav-links li a:hover {
+    color: white;
+    background: rgba(255,255,255,0.15);
+    transform: perspective(500px) translateY(-3px) translateZ(8px);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.sign-up,
+.signup-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    padding: 12px 28px;
+    border-radius: 30px;
+    color: white;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.sign-up:hover,
+.signup-btn:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    transform: perspective(500px) translateY(-4px) translateZ(10px);
+    box-shadow: 0 12px 30px rgba(59, 130, 246, 0.5);
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.user-avatar:hover {
+    transform: perspective(500px) scale(1.1) rotateY(10deg);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.6);
+}
+
+.logout-btn {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+.logout-btn:hover {
+    background: white;
+    color: #3a4560;
+    transform: perspective(500px) translateY(-3px) translateZ(8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.mobile-menu-btn span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+    .header {
+        padding: 0 20px;
+    }
+
+    .logo-nav {
+        gap: 20px;
+    }
+
+    .nav-links,
+    .signin-up {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .nav-links,
+    .signin-up {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: #3a4560;
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        display: none;
+    }
+
+    .nav-links.open,
+    .signin-up.open {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-container h2 {
+        font-size: 16px;
+    }
+}
+
+.logo-container,
+img{
+    display: felx;
+    height: 5pc;
+    padding: 5px, 5px;
+    width: auto;
+    margin: 10px, 10px;
+}

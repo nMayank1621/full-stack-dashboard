@@ -1,0 +1,217 @@
+.aitools-container {
+  padding: 20px;
+}
+
+.page-header {
+  margin-bottom: 30px;
+}
+
+.page-header h1 {
+  color: #3a4560;
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 16px;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 24px;
+}
+
+.tool-card {
+  background: white;
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.tool-icon {
+  width: 60px;
+  height: 60px;
+  background: #3a4560;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.tool-info h3 {
+  color: #3a4560;
+  font-size: 20px;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.tool-info p {
+  color: #888;
+  font-size: 14px;
+  margin: 0;
+}
+
+.tool-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tool-form input,
+.tool-form textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.tool-form input:focus,
+.tool-form textarea:focus {
+  outline: none;
+  border-color: #3a4560;
+}
+
+.tool-btn {
+  background: #3a4560;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.tool-btn:hover {
+  background: #2d374d;
+}
+
+.tool-output {
+  background: #f6f8fc;
+  padding: 18px;
+  border-radius: 8px;
+  border-left: 4px solid #3a4560;
+}
+
+.tool-output h4 {
+  color: #3a4560;
+  font-size: 15px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.tool-output p {
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chat-messages {
+  background: #f6f8fc;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid #3a4560;
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chat-message {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 85%;
+}
+
+.chat-message.user {
+  background: #3a4560;
+  color: white;
+  align-self: flex-end;
+}
+
+.chat-message.ai {
+  background: white;
+  color: #3a4560;
+  align-self: flex-start;
+  border: 1px solid #ddd;
+}
+
+.chat-form {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-form input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.chat-form input:focus {
+  outline: none;
+  border-color: #3a4560;
+}
+
+.chat-form button {
+  background: #3a4560;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.chat-form button:hover {
+  background: #2d374d;
+}
+
+.image-output img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.code-output pre {
+  margin: 0;
+  padding: 16px;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+}
