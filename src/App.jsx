@@ -47,7 +47,7 @@ ChartJS.register(
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [currentPage, setCurrentPage] = useState('login'); // 'dashboard', 'login', 'signup', 'forgotPassword', 'about', 'blog', 'contact', 'analytics', 'reports', 'users', 'aitools', 'settings'
+  const [currentPage, setCurrentPage] = useState('about'); // 'dashboard', 'login', 'signup', 'forgotPassword', 'about', 'blog', 'contact', 'analytics', 'reports', 'users', 'aitools', 'settings'
   const [currentUser, setCurrentUser] = useState(null);
 
   // Check if user is logged in on page load
@@ -56,6 +56,7 @@ function App() {
     if (savedUser) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setCurrentUser(JSON.parse(savedUser));
+      setCurrentPage('dashboard');
     }
   }, []);
 
@@ -110,7 +111,7 @@ function App() {
       value: "585K",
       subtitle: "New Users",
       progressColor: "#55efc4",
-      progressValue: 70,
+      progressValue: 79,
     },
   ];
 

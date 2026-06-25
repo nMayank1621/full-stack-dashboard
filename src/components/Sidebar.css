@@ -1,6 +1,6 @@
 .sidebar {
     width: 260px;
-    background: #3a4560;
+    background: #ababab;
     padding: 30px 0;
     transition: all 0.3s;
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
@@ -26,7 +26,7 @@
     display: block;
     padding: 14px 20px;
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(0, 0, 0, 0.85);
     font-weight: 600;
     font-size: 15px;
     border-radius: 8px;
@@ -36,7 +36,7 @@
 
 .sidebar-nav li a:hover {
     background: rgba(255, 255, 255, 0.15);
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .sidebar-nav li a.active {
@@ -81,5 +81,5 @@
 
   .sidebar.active {
     left: 0;
-  }
+    }
 }

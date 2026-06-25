@@ -46,6 +46,8 @@
 .form-group textarea {
   padding: 16px 18px;
   border: 2px solid #e5e9f2;
+  background-color: white;
+  color: black;
   border-radius: 12px;
   font-size: 16px;
   transition: all 0.3s ease;
@@ -90,6 +92,8 @@
 }
 
 .auth-btn:hover {
+  /* color: rgb(108, 255, 108); */
+  background-color: rgb(72, 255, 72);
   transform: perspective(500px) translateY(-4px) translateZ(8px) rotateX(-2deg);
-  box-shadow: 0 12px 30px rgba(58, 69, 96, 0.4);
+  box-shadow: 0 12px 30px rgba(101, 179, 102, 0.4);
 }
