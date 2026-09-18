@@ -3,8 +3,7 @@ import "./Signup.css";
 
 function Signup(props) {
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -28,8 +27,7 @@ function Signup(props) {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          first_name: firstName,
-          last_name: lastName,
+          name: name,
           email: email,
           password: password
         })
@@ -39,8 +37,7 @@ function Signup(props) {
 
       if (response.ok) {
         setSuccess("Account created successfully!");
-        setFirstName("");
-        setLastName("");
+        setName("");
         setEmail("");
         setPassword("");
         setConfirmPassword("");
@@ -65,12 +62,8 @@ function Signup(props) {
               <input
                 type="text"
                 placeholder="Full Name"
-                value={`${firstName} ${lastName}`.trim()}
-                onChange={(e) => {
-                  const parts = e.target.value.split(' ');
-                  setFirstName(parts[0] || '');
-                  setLastName(parts.slice(1).join(' ') || '');
-                }}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 required
               />
             </div>

@@ -62,8 +62,8 @@ function Navbar(props) {
       {currentUser ? (
         <div className="user-section">
           <div className="user-avatar">
-            {currentUser?.first_name
-              ? currentUser.first_name.charAt(0).toUpperCase()
+            {currentUser?.name
+              ? currentUser.name.charAt(0).toUpperCase()
               : "U"}
           </div>
 

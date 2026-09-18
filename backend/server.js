@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2");
-
+const bcrypt = require("bcrypt");
 const app = express();
 
 app.use(cors());
@@ -11,7 +11,7 @@ app.use(express.json());
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Nmayank@1621",
+  password: "nmayank@1621",
   database: "dashboard_mysql",
 });
 
@@ -63,69 +63,106 @@ app.post("/verify-code", (req, res) => {
 });
 
 // Reset password
-app.post("/reset-password", (req, res) => {
+app.post("/reset-password", async (req, res) => {
   const { email, newPassword } = req.body;
 
-  const sql = "UPDATE users SET password=? WHERE email=?";
-  db.query(sql, [newPassword, email], (err, result) => {
-    if (err) {
-      return res.status(500).json({ message: err.message });
-    }
+  try {
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
 
-    delete verificationCodes[email];
-    res.status(200).json({ message: "Password reset successfully" });
-  });
+    const sql = "UPDATE users SET password=? WHERE email=?";
+
+    db.query(sql, [hashedPassword, email], (err, result) => {
+      if (err) {
+        return res.status(500).json({
+          message: err.message,
+        });
+      }
+
+      delete verificationCodes[email];
+
+      res.status(200).json({
+        message: "Password reset successfully",
+      });
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message,
+    });
+  }
 });
 
 // SIGNUP ROUTE
-app.post("/signup", (req, res) => {
+app.post("/signup", async (req, res) => {
   try {
-    const { first_name, last_name, email, password } = req.body;
+    console.log("Signup request body:", req.body);
+    const { name, email, password } = req.body;
 
-    // Check duplicate email or name
-    const checkSql =
-      "SELECT * FROM users WHERE email=? OR (first_name=? AND last_name=?)";
+    console.log("Received data - name:", name, "email:", email, "password length:", password ? password.length : 0);
 
-    db.query(
-      checkSql,
-      [email, first_name, last_name],
+    // Validation
+    if (!name || !email || !password) {
+      return res.status(400).json({
+        message: "All fields are required",
+      });
+    }
 
-      (err, result) => {
-        if (err) {
-          return res.status(500).json({
-            message: err.message,
-          });
-        }
+    if (!email.includes("@")) {
+      return res.status(400).json({
+        message: "Invalid email",
+      });
+    }
 
-        if (result.length > 0) {
-          return res.status(400).json({
-            message: "User already exists",
-          });
-        }
+    if (password.length < 6) {
+      return res.status(400).json({
+        message: "Password must be at least 6 characters",
+      });
+    }
 
-        const insertSql =
-          "INSERT INTO users(first_name,last_name,email,password) VALUES(?,?,?,?)";
+    // Check if user already exists
+    const checkSql = "SELECT * FROM users WHERE email=?";
 
-        db.query(
-          insertSql,
-          [first_name, last_name, email, password],
+    db.query(checkSql, [email], async (err, result) => {
+      if (err) {
+        return res.status(500).json({
+          message: err.message,
+        });
+      }
 
-          (err, result) => {
-            if (err) {
-              return res.status(500).json({
-                message: err.message,
-              });
-            }
+      if (result.length > 0) {
+        return res.status(400).json({
+          message: "User already exists",
+        });
+      }
 
-            res.status(200).json({
-              message: "User Registered Successfully",
+      // Hash Password
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      const insertSql =
+        "INSERT INTO users(name,email,password) VALUES(?,?,?)";
+
+      db.query(
+        insertSql,
+        [name, email, hashedPassword],
+        (err, result) => {
+          if (err) {
+            return res.status(500).json({
+              message: err.message,
             });
-          },
-        );
-      },
-    );
+          }
+
+          return res.status(201).json({
+            message: "User Registered Successfully",
+          });
+        }
+      );
+    });
+
   } catch (error) {
-    console.error(error)
+    console.log(error);
+    return res.status(500).json({
+      message: "Internal Server Error",
+    });
   }
 });
 
@@ -133,25 +170,50 @@ app.post("/signup", (req, res) => {
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
 
-  const sql = "SELECT * FROM users WHERE email=? AND password=?";
+  const sql = "SELECT * FROM users WHERE email=?";
 
-  db.query(sql, [email, password], (err, result) => {
+  db.query(sql, [email], async (err, result) => {
     if (err) {
       return res.status(500).json({
         message: err.message,
       });
     }
 
-    if (result.length > 0) {
-      return res.status(200).json({
-        message: "Login Success",
-
-        user: result[0],
+    if (result.length === 0) {
+      return res.status(401).json({
+        message: "Invalid Email or Password",
       });
     }
 
-    return res.status(401).json({
-      message: "Invalid Email or Password",
+    const user = result[0];
+
+    // Check if password is bcrypt hash (starts with $2b$ or similar) or plaintext
+    let match = false;
+    if (user.password.startsWith("$2b$") || user.password.startsWith("$2a$") || user.password.startsWith("$2y$")) {
+      // It's a bcrypt hash - compare normally
+      match = await bcrypt.compare(password, user.password);
+    } else {
+      // It's plaintext - compare directly (for existing users)
+      match = password === user.password;
+      // Optional: Automatically update to bcrypt for next time!
+      if (match) {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const updateSql = "UPDATE users SET password=? WHERE id=?";
+        db.query(updateSql, [hashedPassword, user.id], (updateErr) => {
+          if (updateErr) console.log("Failed to update password to hash:", updateErr);
+        });
+      }
+    }
+
+    if (!match) {
+      return res.status(401).json({
+        message: "Invalid Email or Password",
+      });
+    }
+
+    return res.status(200).json({
+      message: "Login Success",
+      user,
     });
   });
 });
